@@ -1,4 +1,4 @@
-# Workflower with laravel. A Bussines Process Implementation with PHP
+# Workflower with laravel. A Bussines Process Implementation with PHP8.1
 
 ## Table of Contents
 
@@ -23,6 +23,7 @@ cp .env.example .env
 # change your mysql config
 
 composer install
+php artisan key:generate
 php artisan migrate
 php artisan serve
 ```
