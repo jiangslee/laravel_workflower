@@ -22,7 +22,7 @@ class FixPullRequestUsecase implements ProcessAwareInterface
 
         $workItem = new WorkItemContext($dev);
         $workItem->setProcessContext($pullRequest);
-        $workItem->setActivityId($pullRequest->getWorkflow()->getCurrentFlowObject()->getId());
+        $workItem->setActivityId($pullRequest->getProcessInstance()->getCurrentFlowObject()->getId());
         $this->process->allocateWorkItem($workItem);
         $this->process->startWorkItem($workItem);
         $this->process->completeWorkItem($workItem);

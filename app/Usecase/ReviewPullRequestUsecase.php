@@ -21,7 +21,7 @@ class ReviewPullRequestUsecase implements ProcessAwareInterface
 
         $workItem = new WorkItemContext($reviewer);
         $workItem->setProcessContext($pullRequest);
-        $workItem->setActivityId($pullRequest->getWorkflow()->getCurrentFlowObject()->getId());
+        $workItem->setActivityId($pullRequest->getProcessInstance()->getCurrentFlowObject()->getId());
         $this->process->allocateWorkItem($workItem);
         $this->process->startWorkItem($workItem);
         $this->process->completeWorkItem($workItem);

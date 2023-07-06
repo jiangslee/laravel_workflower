@@ -131,7 +131,7 @@ class PullRequestController extends Controller
 
         $pullRequest->title = $pullRequestWorkflow->getTitle();
         $pullRequest->approved = $pullRequestWorkflow->isApproved();
-        $workflow = $pullRequestWorkflow->getWorkflow();
+        $workflow = $pullRequestWorkflow->getProcessInstance();
         $pullRequest->state = $workflow->getCurrentFlowObject()->getId();
         $pullRequest->serialized_workflow = $serializer->serialize($workflow);
 

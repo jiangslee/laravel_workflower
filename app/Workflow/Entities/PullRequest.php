@@ -5,7 +5,7 @@ namespace App\Workflow\Entities;
 
 use PHPMentors\Workflower\Persistence\WorkflowSerializableInterface;
 use PHPMentors\Workflower\Process\ProcessContextInterface;
-use PHPMentors\Workflower\Workflow\Workflow;
+use PHPMentors\Workflower\Workflow\ProcessInstance;
 
 class PullRequest implements ProcessContextInterface, WorkflowSerializableInterface
 {
@@ -57,12 +57,12 @@ class PullRequest implements ProcessContextInterface, WorkflowSerializableInterf
         ];
     }
 
-    public function getWorkflow()
+    public function getProcessInstance()
     {
         return $this->workflow;
     }
 
-    public function setWorkflow(Workflow $workflow)
+    public function setProcessInstance(ProcessInstance $workflow)
     {
         $this->workflow = $workflow;
     }

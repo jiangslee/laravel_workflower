@@ -17,7 +17,7 @@ class ConverterModelToWorkflowEntity
         $pullRequest->setApproved($model->approved);
         
         if ($model->serialized_workflow != null) {
-            $pullRequest->setWorkflow($this->deserializeWorkflow($model));
+            $pullRequest->setProcessInstance($this->deserializeWorkflow($model));
             $pullRequest->setSerializedWorkflow($model->serialized_workflow);
         }
 

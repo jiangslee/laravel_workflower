@@ -11,6 +11,7 @@ use PHPMentors\Workflower\Process\ProcessAwareInterface;
 
 class CreatePullRequestUsecase implements ProcessAwareInterface
 {
+    private Process $process;
 
     public function setProcess(Process $process)
     {
@@ -22,12 +23,12 @@ class CreatePullRequestUsecase implements ProcessAwareInterface
         $dev = new Dev();
 
         $eventContext = new EventContext('StartEvent_1', $pullRequest);
-
         $this->process->start($eventContext);
 
         $workItem = new WorkItemContext($dev);
         $workItem->setProcessContext($pullRequest);
-        $workItem->setActivityId($pullRequest->getWorkflow()->getCurrentFlowObject()->getId());
+        $workItem->setActivityId($pullRequest->getProcessInstance()->getCurrentFlowObject()->getId());
+
         $this->process->allocateWorkItem($workItem);
         $this->process->startWorkItem($workItem);
         $this->process->completeWorkItem($workItem);
