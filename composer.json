@@ -61,7 +61,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/77web/workflower.git"
+            "url": "https://github.com/jiangslee/workflower.git"
         }
     ]
 }

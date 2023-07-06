@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "278d7561c17521b157daf9f15d091e92",
+    "content-hash": "8ec7b1a50e327afef7c5d98da9577abf",
     "packages": [
         {
             "name": "brick/math",
@@ -1868,8 +1868,8 @@
             "version": "dev-php8",
             "source": {
                 "type": "git",
-                "url": "https://github.com/77web/workflower.git",
-                "reference": "15a0444a6a5427c0fd7cb655165bb5c26888cdf3"
+                "url": "https://github.com/jiangslee/workflower.git",
+                "reference": "fa940fdab7485b94c0a55195ce94eed77ea70e89"
             },
             "require": {
                 "ext-dom": "*",
@@ -1913,7 +1913,7 @@
                 "process",
                 "workflow"
             ],
-            "time": "2023-05-21T08:49:35+00:00"
+            "time": "2023-07-06T03:05:11+00:00"
         },
         {
             "name": "phpoption/phpoption",

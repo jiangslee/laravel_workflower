@@ -8,6 +8,25 @@
 - [Sourcecode](#sourcecode)
 - [Screenshots](#screenshots)
 
+## Change description
+
+- `composer.json` repositories use [https://github.com/jiangslee/workflower]() `dev-php8` version (forked from [https://github.com/77web/workflower]()),  the latest version has a type error prompt, in the first parameter of `allocateWorkItem()`, I think I have fixed it, and I have PR to `77web`.
+- Follow up on `phpmentors-jp/workflower` changes in the latest version, e.g. `DropWorkflowBuilder` pull request has  changed `Workflow` to `ProcessInstance`
+- It works, but I get `unserialize(): Error at offset 157 of 1473 bytes` error in `post pullrequest/review`, I will continue to try to solve this problem.
+
+## Step by step
+
+```
+git clone -b laravel10 https://github.com/jiangslee/laravel_workflower.git
+
+cp .env.example .env
+# change your mysql config
+
+composer install
+php artisan migrate
+php artisan serve
+```
+
 ## Introduction
 
 This project is an example of https://github.com/phpmentors-jp/workflower  BPMN 2.0 workflow engine and Laravel 5.8 Framework integration.
@@ -38,7 +57,7 @@ This class needs three class to work.
 
 Additionally to this classes I create the class Workflow/Entities/**PullRequest** that implements ProcessContextInterface and WorkflowSerializableInterface interfaces. This class it is a data structure that has the necessary data for the workflow to work.
 
-With this classes create a Process instance. 
+With this classes create a Process instance.
 
 ```php
 $repository = new WorkflowRepository();
@@ -46,6 +65,7 @@ $pullRequestWorkflow = new PullRequestWorkflow();
 $operationRunner = new MergePullRequestOperationRunner();
 $process = new Process($pullRequestWorkflow, $repository, $operationRunner);
 ```
+
 We set the instance in the Usecase class and pass the Pullrequest instance in the run method.
 
 ```php
@@ -54,6 +74,7 @@ $usecase->setProcess($process); // createProcess() method in the controller clas
 $entity = $usecase->run($pullrequest); // $entity attribute in the controller class
 return $entity;
 ```
+
 ### Laravel
 
 For persistence I create a eloquent model Models/**PullRequest**. This class save the data in the database including the serialized workflow.
